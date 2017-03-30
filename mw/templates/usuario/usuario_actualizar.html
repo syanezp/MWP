@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} Actualizar usuario {% endblock %}
+{% block content %}
+	<font face="Arial" size="2"><i>Actualizar datos para </i><b>{{ user.username }}</b></font>
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ forma.as_p }}
+		<input type="submit" value="submit">
+		<button type="reset">Limpiar</button>
+	</form>
+{% endblock %}

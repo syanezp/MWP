@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+  <br>
+  <h1>MWP</h1>
+  <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+    <font id="subtituloNegro">
+      Pagina principal del proyecto, <br>
+      Django mejora el desarrollo Web. Está diseñado para poner rápidamente en movimiento tu propio proyecto de Django.  
+    </font>
+    <br><br>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <p>Login</p>  
+  <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="id_nombreusuario">Nombreusuario:</label>
+      <input id="id_nombreusuario" placeholder="Ingresa el usuario" name="nombreusuario" type="text" style="font-size:12pt;height:30px" required/></p>
+      <label for="id_password">Password:</label>
+      <input id="id_password" placeholder="Ingresa el Password" name="password" type="password" style="font-size:12pt;height:30px" required/></p>
+      <button type="submit" class="nounderline btn btn-primary btn-lg"></i>Entrar</button>
+      <button type="reset" class="nounderline btn btn-primary">Limpiar</button>
+  </form>
+  <br>
+  </div>
+
+{% endblock %}

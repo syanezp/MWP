@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Ubicaciones {% endblock %}
+{% block content %}
+	<h3>UBICACIONES</h3>	
+	<font face="Ubuntu" size="2">
+
+	{% if ubicaciones %}
+		<table border=0 cellspacing="20" cellpadding="4">		
+		<td><font face="Ubuntu" size="2"><b>Nombre</b></font></td>
+		<td><font face="Ubuntu" size="2"><b>Descripcion / Direccion</b></font></td>
+		<td><font face="Ubuntu" size="2"><b>Latitud</b></font></td>
+		<td><font face="Ubuntu" size="2"><b>Longitud</b></font></td>
+		<td><font face="Ubuntu" size="2"><b>Ver</b></font></td><tr>
+		{% for a in ubicaciones %}
+			<td><font face="Ubuntu" size="2">{{a.Nombre}}</font></td>
+			<td><font face="Ubuntu" size="2">{{a.Descripcion}}</font></td>
+			<td><font face="Ubuntu" size="2">{{a.Latitud}}</font></td>
+			<td><font face="Ubuntu" size="2">{{a.Longitud}}</font></td>
+			<td><a class="nounderline btn btn-primary" href="/ubicacion_single/{{a.id}}" > Ver </a></td><tr>
+		{% endfor %}	
+		</table>
+
+		<a href="/ubicacion_ver/page/1"> << </a>
+		{% if ubicaciones.has_previous %}
+			<a href="/ubicacion_ver/page/{{ ubicaciones.previous_page_number }}"> Prev </a>
+		{% else %}
+			<a href="#"> Prev </a>
+		{% endif %}
+
+		{% if ubicaciones.has_next %}
+			<a href="/ubicacion_ver/page/{{ ubicaciones.next_page_number }}"> Next </a>
+		{% else %}
+			<a href="#"> Next </a>
+		{% endif %}
+		<a href="/ubicacion_ver/page/{{ ubicaciones.paginator.num_pages }}"> >> </a>
+		<br>
+		Pagina {{ ubicaciones.number }} de {{ ubicaciones.paginator.num_pages}}
+		<br><br>
+	{% else %}
+	<br>
+		<font face="Ubuntu" size="2" color="Red">
+			Aun no tienes ubicaciones agregadas
+		</font>
+	<br>
+	{% endif %}
+
+
+	<br>
+	<a class="nounderline btn btn-primary" href="{% url "vista_crearubicacion" %}" > Agregar nueva ubicacion </a>
+	</font>
+{% endblock %}

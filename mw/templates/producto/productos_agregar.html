@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Ubicaciones crear {% endblock %}
+{% block content %}
+	
+	{% if producto_agregado != False %}
+		{% if ubicacion_agregada == False %}
+			<font color="red" size="2">No se pudo crear el ubicacion</font>
+		{% else %}
+			<font color="green" size="2">Ubicacion creada correctamente</font>
+		{% endif %}
+	{% else %}
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ forma.as_p }}
+		<input type="hidden" name="idUbicacion" value={{idUbicacion}}>
+		<button type="submit" class="btn btn-small btn-primary">Agregar</button>
+		<button type="reset" class="btn btn-small btn-primary">Limpiar</button>
+	</form>
+	{% endif %}
+	<a href="javascript:window.history.go(-1);">Regresar</a>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Ubicacion sencilla {% endblock %}
+{% block content %}
+	<h3>Ver o editar tus ubicaciones</h3>
+	<hr>
+	<font face="Ubuntu" size="2">
+	<h3>Informacion de la ubicacion</h3>
+	{{ubicacion.Nombre}}<br>
+	{{ubicacion.Descripcion}}<br>
+	{{ubicacion.Latitud}}<br>
+	{{ubicacion.Longitud}}<br>
+	{% if ubicacion.Fotografia %}
+		<img src="{{ MEDIA_URL }}{{ubicacion.Fotografia}}" width=120 height=110><br>
+	{% endif %}
+
+	{% if productos %}
+		<hr>
+		<h4>Productos asignados a esta ubicacion</h4>
+		<table cellpadding="10" cellspacing="5">
+			<td>Nombre</td>
+			<td>Descripcion</td>
+			<td>Precio</td>
+			<td>Estatus</td>
+			<td>Editar</td><tr>
+			{% for p in productos %}
+				<td>{{ p.Nombre }}</td>
+				<td>{{ p.Descripcion }}</td>
+				<td>{{ p.Precio }}</td>
+				<td>{{ p.Estatus }}</td>
+				<td>Editar</td><tr>
+			{% endfor%}
+		</table>
+	{% else %}
+		<br><font color="Orange"><p>Aun no hay productos agregados a esa ubicacion</p></font>
+	{% endif %}
+	
+	<hr>
+	Agrega tus productos a esta ubicacion.<br>
+	<a href="/productos_agregar/{{ ubicacion.id }}">Agregar producto</a>
+	<br><br><br>
+	<a href="javascript:window.history.go(-1);">Regresar</a>
+	</font>
+{% endblock %}

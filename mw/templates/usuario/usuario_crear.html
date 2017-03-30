@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+<center>
+<table border=0 width=30%>
+<td>
+	<div id="divLogin">
+	{% if usuario_creado != None %}
+		{% if usuario_creado == False %}
+			<font color="red" size="2">No se pudo crear el usuario</font>
+		{% else %}
+			<font color="green" size="2">Usuario creado correctamente</font>
+		{% endif %}
+	{% else %}
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label for="id_nombreusuario">Nombre de Usuario:</label> <input id="id_nombreusuario" name="nombreusuario" type="text" style="font-size:12pt;height:30px" required/></p>
+		<label for="id_password">Password:</label> <input id="id_password" name="password" type="password" style="font-size:12pt;height:30px" required/></p>
+		<label for="id_password_confirmacion">Password confirmacion:</label> <input id="id_password_confirmacion" name="password_confirmacion" type="password" style="font-size:12pt;height:30px" required/></p>
+		<button type="submit" class="btn btn-small btn-primary"><i class="icon-search"></i>Crear</button>
+		<button type="reset" class="btn btn-small btn-primary">Limpiar</button>
+	</form>
+	{% endif %}
+	</div>
+</td>
+</table>
+</center>
+
+{% endblock %}

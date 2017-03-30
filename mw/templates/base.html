@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %} BASE {% endblock%}</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="/media/css/estilo3.css">
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css">
+<body>
+<header>
+	<nav>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	{% if user.is_authenticated %}
+	<ul class="nav nav-pills">
+		<li role="presentation"><a href="{% url "index" %}">Inicio</a></li>		
+		<li role="presentation"><a href="/ubicacion_ver/page/1">Ubicaciones</a></li>
+		<li role="presentation"><a href="#">Productos</a></li>
+		<li role="presentation"><a href="#">Favoritos</a></li>
+		<li role="presentation"><a href="{% url "vista_categoriaagregar"%}">Categorias</a></li>
+		<li role="presentation"><a href="{% url "vista_logout" %}">Cerrar Sesion</a></li>
+	</ul>
+	{% else %}
+		<p class="navbar-text pull-right">  Favor de iniciar sesion | <a href="{% url "vista_login" %}">Iniciar Sesion </a>|
+		Crear cuenta | <a href="{% url "vista_crearusuario" %}">Crear cuenta </a></p>
+	{% endif %}	
+	</div>	
+</nav>
+	
+</header>
+
+
+<section>
+<div class="container"><br>
+	<div>
+		<div class="row">
+		<br>
+				{% block content %}
+				{% endblock %}
+		</div>
+	</div>
+</div>
+</section>
+</body>
+</html>

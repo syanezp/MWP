@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Inicio {% endblock %}
+{% block content %}	
+	<br>
+	<h1>MWP</h1>
+
+	{% if user.is_authenticated %}
+		<h3>Sesion iniciada</h3>
+
+		{% if usuario_info.Nombre %}
+			<br>Bienvenid@ {{usuario_info.Nombre}}<br>
+		{% else %}
+			<br>Bienvenid@ {{user.username}}<br>
+		{% endif %}
+
+		{% if not usuario_info %}
+			{{ usuario_info.Nombre }}
+			<p>Es necesario actualizar tus datos</p>
+			<a href="{% url "vista_actualizarusuario" %}">Actualizar datos</a>
+		{% else %}
+			<p>Datos actualizados</p>
+		{% endif %}
+
+	{% else %}
+
+		<div><font id="textoNormal"></font>
+		Django fue desarrollado para satisfacer esas nuevas ambiciones. Django te permite construir en profundidad, de forma dinámica, sitios interesantes en un tiempo extremadamente corto. Django está diseñado para hacer foco en la diversión, en las partes interesantes de tu trabajo, al mismo tiempo que alivia el dolor de las partes repetitivas. Al hacerlo, proporciona abstracciones de alto nivel a patrones comunes del desarrollo Web, agrega atajos para tareas frecuentes de programación y claras convenciones sobre cómo resolver problemas. Al mismo tiempo, intenta mantenerse fuera de tu camino, dejando que trabajes fuera del alcance del framework cuando sea necesario. Escribimos este libro porque creemos firmemente que Django mejora el desarrollo Web. Está diseñado para poner rápidamente en movimiento tu propio proyecto de Django, en última instancia aprenderás todo lo que necesites saber para producir el diseño, desarrollo y despliegue de sitios satisfactorios y de los cuales te sientas orgulloso. 
+		</div>
+
+	{% endif %}
+
+{% endblock %}
